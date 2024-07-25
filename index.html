@@ -107,7 +107,6 @@
         .carousel .next {
             right: 10px;
         }
-            }
         .footer {
             padding: 10px 0;
             font-family: 'DM Sans', sans-serif;
@@ -136,8 +135,8 @@
                 <img src="https://raw.githubusercontent.com/refuse2sink/material/main/BAB1B820-B2F8-4F44-91DE-A5C9F4F4ACC8.jpg" alt="Image 2">
                 <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3053.JPG" alt="Image 3">
                 <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_4145.JPG" alt="Image 4">
-                <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3386.JPG" alt="Image 4">
-                <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3446.JPG" alt="Image 4">
+                <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3386.JPG" alt="Image 5">
+                <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3446.JPG" alt="Image 6">
                 <button class="prev">&lt;</button>
                 <button class="next">&gt;</button>
             </div>
@@ -148,7 +147,7 @@
                 <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3801.JPG" alt="Image 1" class="active">
                 <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3893.JPG" alt="Image 2">
                 <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3791.JPG" alt="Image 3">
-                <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3798.JPG" alt="Image 3">
+                <img src="https://raw.githubusercontent.com/refuse2sink/material/main/IMG_3798.JPG" alt="Image 4">
                 <button class="prev">&lt;</button>
                 <button class="next">&gt;</button>
             </div>
@@ -189,31 +188,34 @@
                 <button class="next">&gt;</button>
             </div>
         </div>
-     </div>
     </div>
-    <div class="footer">&copy; 2024 r2s. all rights reserved. mg.</div>
+    <div class="footer">
+        &copy; 2024 Rise 2 Shine. All rights reserved.
+    </div>
     <script>
-        document.querySelectorAll('.carousel').forEach(carousel => {
-            const images = carousel.querySelectorAll('img');
+        const carousels = document.querySelectorAll('.carousel');
+        
+        carousels.forEach(carousel => {
             let currentIndex = 0;
-
-            function updateCarousel() {
-                images.forEach((img, index) => {
-                    img.classList.toggle('active', index === currentIndex);
+            const images = carousel.querySelectorAll('img');
+            const prevButton = carousel.querySelector('.prev');
+            const nextButton = carousel.querySelector('.next');
+            
+            function showImage(index) {
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === index);
                 });
             }
 
-            carousel.querySelector('.prev').addEventListener('click', () => {
+            prevButton.addEventListener('click', () => {
                 currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-                updateCarousel();
+                showImage(currentIndex);
             });
 
-            carousel.querySelector('.next').addEventListener('click', () => {
+            nextButton.addEventListener('click', () => {
                 currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                updateCarousel();
+                showImage(currentIndex);
             });
-
-            updateCarousel();
         });
     </script>
 </body>
